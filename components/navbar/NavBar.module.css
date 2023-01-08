@@ -1,0 +1,44 @@
+.container {
+  height: 90px;
+  margin-top: 30px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  /* justify-content: center; */
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  padding: 9px 22px;
+  height: 46px;
+  flex: 1;
+  border: 2px solid black;
+  border-radius: 50px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.loginButton {
+  /* display: inline-block; */
+  margin-right: 20px;
+}
+
+.searchInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
