@@ -1,6 +1,9 @@
+"use client";
 import Footer from "../components/footer/Footer";
 import Navbar from "../components/navbar/NavBar";
+import Provider from "../provider/Provider";
 import "../styles/globals.css";
+import { textFont } from "../utils/fonts";
 
 export default function RootLayout({
   children,
@@ -8,12 +11,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="ko" className={textFont.className}>
       <head />
       <body>
-        <div className="wrapper">
+        <div className="container">
           <Navbar />
-          <main>{children}</main>
+          <Provider>{children}</Provider>
           <Footer />
         </div>
       </body>
