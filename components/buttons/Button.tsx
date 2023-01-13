@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
+import { ICategories } from "../../lib/api";
 import styles from "./Button.module.css";
 
 function ButtonLink({
@@ -21,21 +22,23 @@ function ButtonLink({
   );
 }
 
-function Button({
+function ButtonCatgeory({
+  category,
   children,
-  className,
   onClickHandler,
 }: {
+  category: ICategories;
   children: React.ReactNode;
-  className?: string;
-  onClickHandler: React.MouseEventHandler<HTMLButtonElement>;
+  onClickHandler: any;
 }) {
+  // console.log(children);
+
   return (
     <>
       <button
         type="button"
-        className={clsx(styles.buttonLink, className)}
-        onClick={onClickHandler}
+        className={styles.buttonCatgeory}
+        onClick={() => onClickHandler(category.strCategory)} //함수를 호출? 내가 선택한 타겟을 받아서 그다음 실행, () => {} 왜 이렇게 했을까?
       >
         {children}
       </button>
@@ -43,4 +46,4 @@ function Button({
   );
 }
 
-export { ButtonLink, Button };
+export { ButtonLink, ButtonCatgeory };

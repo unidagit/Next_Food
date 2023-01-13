@@ -1,8 +1,20 @@
 .buttonLink {
-  padding: 1rem 2rem;
-  font-size: 1.8rem;
-  color: var(--white);
+  /* width: 100%; */
+  padding: 0.5rem;
+  font-size: 1rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  /* background-color: blue; */
+}
+
+.buttonCatgeory {
+  /* width: 123px; */
+  padding: 1rem 2.1rem;
+  background-color: black;
+  font-size: 1rem;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  /* border: 2px solid white; */
 }
