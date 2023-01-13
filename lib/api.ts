@@ -1,6 +1,14 @@
 import axios from "axios";
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
 
+export interface ICategoriesProps {
+  setSelect?: any;
+  categories?: ICategories[];
+  categoriesLoading: boolean;
+  categoriesError: boolean;
+  categoriesErrorMessage: null | unknown;
+}
+
 export interface ICategories {
   idCategory: string;
   strCategory: string;
