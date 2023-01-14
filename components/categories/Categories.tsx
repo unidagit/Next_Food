@@ -5,7 +5,7 @@ import styles from "./Categories.module.css";
 import CategoryItem from "./CategoryItem";
 
 function Categories({
-  setSelect,
+  setSelectCategory,
   categories,
   categoriesLoading,
   categoriesError,
@@ -20,7 +20,7 @@ function Categories({
   }
 
   const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setSelect(e); //내가 클릭한 인자를 함수에 담아서 보냄
+    setSelectCategory(e); //내가 클릭한 인자를 함수에 담아서 보냄
   };
 
   return (

@@ -6,7 +6,7 @@ import SearchFood from "../../components/searchFood/SearchFood";
 import { getCategories, ICategories } from "../../lib/api";
 
 function SearchFoodPage() {
-  const [select, setSelect] = useState("");
+  const [selectCategory, setSelectCategory] = useState("");
   //categories 리액트쿼리로 데이터 가져와서 버튼만들기
   const {
     data: categories,
@@ -14,13 +14,13 @@ function SearchFoodPage() {
     isError: categoriesError,
     error: categoriesErrorMessage,
   } = useQuery<ICategories[]>(["categories"], getCategories);
-  console.log(select);
+  console.log(selectCategory);
 
   return (
     <div>
-      {/* <SearchFood /> */}
+      <SearchFood />
       <Categories
-        setSelect={setSelect}
+        setSelectCategory={setSelectCategory}
         categories={categories}
         categoriesLoading={categoriesLoading}
         categoriesError={categoriesError}
