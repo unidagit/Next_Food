@@ -1,0 +1,7 @@
+.categoriesContainer {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /* background-color: aquamarine; */
+}
