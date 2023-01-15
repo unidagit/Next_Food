@@ -26,7 +26,7 @@ function Categories({
   return (
     <div className={styles.categoriesContainer}>
       {categories &&
-        categories.map((item: ICategories) => (
+        categories.map((item) => (
           <CategoryItem
             key={item.idCategory}
             category={item}
