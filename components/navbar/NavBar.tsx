@@ -13,8 +13,8 @@ function Navbar() {
         </li>
 
         <li className={styles.right}>
-          <Link className={styles.foodButton} href="/food">
-            Food
+          <Link className={styles.foodButton} href="/meals">
+            Meals
           </Link>
           <Link href="/savedMeals">찜</Link>
         </li>
