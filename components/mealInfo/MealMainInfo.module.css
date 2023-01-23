@@ -1,0 +1,74 @@
+.topContainer {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+.mealImageContainer {
+  flex: 1;
+
+  /* min-width: 200px; */
+  /* max-width: 600px; */
+}
+
+.info {
+  /* background-color: violet; */
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.categoryLabel {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: var(--dark-gray);
+  font-weight: 700;
+  font-size: 12.8px;
+}
+
+.mealName {
+  font-size: 30px;
+}
+
+.mealInfoListBox {
+  display: flex;
+  flex-direction: column;
+  /* background-color: var(--dark-gray); */
+}
+
+.mealInfoList {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.mealInfoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 8px;
+  /* margin-right: 20px; */
+}
+
+.mealInfoItemName {
+  font-weight: 700;
+  color: var(--light-gray);
+}
+
+.mealInfoBtnPlay {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.mealInfoBtnLike {
+  padding: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .topContainer {
+    flex-direction: column;
+  }
+}
