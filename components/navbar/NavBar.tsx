@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./NavBar.module.css";
-import { titleFont } from "../../utils/fonts";
+import Logo from "../../images/LogoOrange.svg";
 
 function Navbar() {
   return (
@@ -8,7 +9,7 @@ function Navbar() {
       <ul className={styles.wrapper}>
         <li className={styles.left}>
           <Link href="/">
-            <p className={titleFont.className}>CookBook</p>
+            <Image src={Logo} alt="logo" width={140} />
           </Link>
         </li>
 
