@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { ICategories } from "../../lib/api";
 import { ButtonCatgeory } from "../buttons/Button";
 
