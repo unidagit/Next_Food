@@ -1,9 +1,13 @@
 "use client";
-import Footer from "../components/footer/Footer";
-import Navbar from "../components/navbar/NavBar";
-import Provider from "../provider/Provider";
 import "../styles/globals.css";
-import { textFont } from "../utils/fonts";
+import { Roboto } from "@next/font/google";
+import Provider from "../provider/Provider";
+import Navbar from "../components/navbar/NavBar";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700", "900"],
+});
 
 export default function RootLayout({
   children,
@@ -11,13 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={textFont.className}>
+    <html lang="ko" className={roboto.className}>
       <head />
       <body>
         <div className="container">
-          <Navbar />
-          <Provider>{children}</Provider>
-          <Footer />
+          <Provider>
+            <Navbar />
+            {children}
+          </Provider>
         </div>
       </body>
     </html>
