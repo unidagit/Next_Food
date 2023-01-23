@@ -1,0 +1,15 @@
+.imageBox {
+  width: 100%;
+}
+
+.customImage {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+  border-radius: 0.8rem;
+}
+
+.imageBox > div {
+  position: unset !important;
+}
