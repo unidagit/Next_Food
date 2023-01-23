@@ -1,19 +1,26 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import { ICategoriesQuery } from "../../lib/api";
+import { useRouter } from "next/navigation";
+import { ICategoriesMeals } from "../../lib/api";
+import styles from "./MealCard.module.css";
 
-function MealCard({ mealInfo }: { mealInfo: ICategoriesQuery }) {
+function MealCard({ mealInfo }: { mealInfo: ICategoriesMeals }) {
+  const router = useRouter();
   return (
-    <Link href={`/meals/${mealInfo.idMeal}`}>
+    <button
+      className={styles.item}
+      type="button"
+      onClick={() => router.push(`/meals/search?q=${mealInfo.idMeal}`)}
+    >
       <Image
+        className={styles.image}
         src={mealInfo.strMealThumb}
         alt="Picture of the food"
         width={200}
         height={200}
       />
       <p>{mealInfo.strMeal}</p>
-    </Link>
+    </button>
   );
 }
 
