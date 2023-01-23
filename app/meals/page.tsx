@@ -4,12 +4,13 @@ import React, { useState } from "react";
 import MealCard from "../../components/cards/MealCard";
 import Categories from "../../components/categories/Categories";
 import Loading from "../../components/loading/Loading";
-import SearchFood from "../../components/searchFood/SearchFood";
+import styles from "./MealsPage.module.css";
+// import SearchFood from "../../components/searchFood/SearchFood";
 import {
   getCategories,
   getQueryMeals,
   ICategories,
-  ICategoriesQuery,
+  ICategoriesMeals,
 } from "../../lib/api";
 
 function MealsPage() {
@@ -29,16 +30,14 @@ function MealsPage() {
     isLoading: categoriesQueryLoading,
     isError: categoriesQueryError,
     error: categoriesQueryErrorMessage,
-  } = useQuery<ICategoriesQuery[]>(
+  } = useQuery<ICategoriesMeals[]>(
     ["categoriesMeals", selectCategory],
     getQueryMeals
   );
-  console.log(categoriesQueryError);
 
   // if (categoriesLoading || categoriesQueryLoading) {
   //   return <Loading />;
   // } 함수라서
-  console.log(categoriesQueryErrorMessage);
 
   return (
     <div>
@@ -53,10 +52,12 @@ function MealsPage() {
 
       {(categoriesLoading || categoriesQueryLoading) && <Loading />}
 
-      {categoriesQueryData &&
-        categoriesQueryData.map((meal) => (
-          <MealCard key={meal.idMeal} mealInfo={meal} />
-        ))}
+      <div className={styles.itemContainer}>
+        {categoriesQueryData &&
+          categoriesQueryData.map((meal) => (
+            <MealCard key={meal.idMeal} mealInfo={meal} />
+          ))}
+      </div>
     </div>
   );
 }
