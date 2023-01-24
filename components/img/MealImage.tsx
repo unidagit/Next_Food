@@ -4,14 +4,12 @@ import styles from "./MealImage.module.css";
 
 function MealImage({ imageAddress }: { imageAddress: string }) {
   return (
-    <div className={styles.imageBox}>
-      <Image
-        src={imageAddress}
-        fill
-        className={styles.customImage}
-        alt="mealsImage"
-      />
-    </div>
+    <Image
+      src={imageAddress}
+      fill
+      className={styles.customImage}
+      alt="mealsImage"
+    />
   );
 }
 

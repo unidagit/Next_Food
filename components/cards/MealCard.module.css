@@ -1,10 +1,8 @@
-.item {
-  width: 200px;
-  background-color: transparent;
-  border: none;
+.mealCardBox {
   cursor: pointer;
+  text-align: center;
 }
 
-.image {
-  border-radius: 0.5rem;
+.mealCardBox:hover {
+  color: var(--point);
 }

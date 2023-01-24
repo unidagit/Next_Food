@@ -1,7 +1,14 @@
 .itemContainer {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.box {
+  grid-template-columns: 1fr 2fr 100px 25%;
+  object-fit: cover;
+  width: 200px;
+  height: 300px;
 }
