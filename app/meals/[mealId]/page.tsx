@@ -11,7 +11,7 @@ function MealsDetailPage() {
   const mealId = searchParams.get("q");
   console.log(mealId);
 
-  const { data, isLoading, isError } = useQuery<IselectMeal>(
+  const { data, isLoading, isError, error } = useQuery<IselectMeal, Error>(
     ["selectMeal", mealId],
     getSelectMeal
   );
@@ -19,6 +19,10 @@ function MealsDetailPage() {
 
   if (isLoading || !data) {
     return <Loading />;
+  }
+
+  if (isError) {
+    return <p>{error.message}</p>;
   }
 
   return (
