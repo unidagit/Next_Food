@@ -22,7 +22,19 @@
   flex: 1;
 }
 
+.mealsText {
+  font-weight: 700;
+}
+
 .foodButton {
+  color: var(--color-primary);
+}
+
+.foodButton:not(:last-child) {
   /* display: inline-block; */
-  margin-right: 20px;
+  margin-right: 1.2rem;
+}
+
+.foodButton:hover {
+  color: var(--color-primary-accent);
 }

@@ -6,15 +6,16 @@
   --font-mono: ui-monospace, "SFMono-Regular", "Consolas", "Liberation Mono",
     "Menlo", monospace;
 
-  /* Dark Mode Colors */
-  --bg: #000;
-  --point: #ff4f26;
-  --light-gray: #b4b4b4;
-  --lighter-gray: #efefef;
-  --lightest-gray: #eaeaea;
-  --dark-gray: #2f2f2f;
-  --link: #3291ff;
-  color-scheme: dark;
+  /* Light Mode Colors */
+  --color-background: #fff;
+  --color-primary: #212426;
+  --color-primary-accent: #ff4f26;
+}
+
+[data-theme="dark"] {
+  --color-background: #212426;
+  --color-primary: #fff;
+  --color-primary-accent: #ff4f26;
 }
 
 * {
@@ -37,7 +38,7 @@ body {
 }
 
 body {
-  background: var(--bg);
+  background: var(--color-background);
 }
 
 h1,
@@ -69,6 +70,7 @@ button {
   padding: 0;
   cursor: pointer;
   background-color: transparent;
+  border: none;
 }
 
 .container {
@@ -77,3 +79,20 @@ button {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+/* 슬라이더 커스터마이징 */
+
+/* .slick-prev,
+.slick-next {
+  transform: none;
+} */
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 2rem;
+}
+
+/* .slick-slide img {
+  position: relative;
+  z-index: 0;
+} */
