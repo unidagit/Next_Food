@@ -1,7 +1,11 @@
+import Image from "next/image";
 import React from "react";
 import { IselectMeal } from "../../lib/api";
+import { ButtonLink } from "../buttons/Button";
 import MealImage from "../img/MealImage";
 import styles from "./MealMainInfo.module.css";
+import Like from "../../images/like.svg";
+import PlayButton from "../../images/playbutton.svg";
 
 function MealMainInfo({ data }: { data: IselectMeal }) {
   return (
@@ -19,21 +23,29 @@ function MealMainInfo({ data }: { data: IselectMeal }) {
                 <p className={styles.mealInfoItemName}>Category</p>
                 <p>{data?.strCategory}</p>
               </li>
+              <div className={styles.line}></div>
               <li className={styles.mealInfoItem}>
                 <p className={styles.mealInfoItemName}>Area</p>
+
                 <p>{data?.strArea}</p>
               </li>
+              <div className={styles.line}></div>
               <li className={styles.mealInfoItem}>
                 <p className={styles.mealInfoItemName}>Cook time</p>
                 <p>20 Mins</p>
               </li>
             </ul>
 
-            <button className={styles.mealInfoBtnPlay} type="button">
-              Play
-            </button>
+            <ButtonLink
+              className={styles.mealInfoBtnPlay}
+              link={data?.strYoutube}
+            >
+              <Image src={PlayButton} alt="save" width={14} />
+              <p>Play</p>
+            </ButtonLink>
             <button className={styles.mealInfoBtnLike} type="button">
-              Like
+              <Image src={Like} alt="save" width={18} />
+              <p>Like</p>
             </button>
           </div>
         </div>
