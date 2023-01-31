@@ -1,8 +1,9 @@
 .mealCardBox {
+  color: var(--color-primary);
   cursor: pointer;
   text-align: center;
 }
 
 .mealCardBox:hover {
-  color: var(--point);
+  color: var(--color-primary-accent);
 }

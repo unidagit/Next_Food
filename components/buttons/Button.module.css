@@ -11,14 +11,16 @@
 .buttonCatgeory {
   /* width: 123px; */
   padding: 1rem 2.1rem;
-  background-color: rgb(70, 70, 70);
+  background-color: transparent;
   font-size: 1rem;
-  color: white;
+  color: var(--color-primary);
   border-radius: 6px;
   cursor: pointer;
-  border: 2px solid transparent;
+  font-weight: 600;
+  border: 1px solid var(--color-primary);
 }
 
 .buttonCatgeory:focus {
-  border: 2px solid rgb(230, 37, 230);
+  border: 1px solid var(--color-primary-accent);
+  color: var(--color-primary-accent);
 }
