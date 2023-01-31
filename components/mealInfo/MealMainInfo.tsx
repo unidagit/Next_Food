@@ -6,6 +6,7 @@ import MealImage from "../img/MealImage";
 import styles from "./MealMainInfo.module.css";
 import Like from "../../images/like.svg";
 import PlayButton from "../../images/playbutton.svg";
+import LikeSvgComponent from "../icon/Like";
 
 function MealMainInfo({ data }: { data: IselectMeal }) {
   return (
@@ -44,7 +45,7 @@ function MealMainInfo({ data }: { data: IselectMeal }) {
               <p>Play</p>
             </ButtonLink>
             <button className={styles.mealInfoBtnLike} type="button">
-              <Image src={Like} alt="save" width={18} />
+              <LikeSvgComponent height={16} width={16} />
               <p>Like</p>
             </button>
           </div>

@@ -4,6 +4,7 @@ import styles from "./NavBar.module.css";
 import Logo from "../../images/LogoOrange.svg";
 import Like from "../../images/like.svg";
 import ThemeModeButton from "../themeModeButton/ThemeModeButton";
+import LikeSvgComponent from "../icon/Like";
 
 function Navbar() {
   return (
@@ -20,12 +21,13 @@ function Navbar() {
             <p className={styles.mealsText}>Meals</p>
           </Link>
           <Link className={styles.foodButton} href="/savedMeals">
-            <Image
+            {/* <Image
               className={styles.likeButton}
               src={Like}
               alt="save"
               width={25}
-            />
+            /> */}
+            <LikeSvgComponent height={24} width={24} />
           </Link>
           {/* <Link className={styles.foodButton} href="/recipe">
             My Recipe

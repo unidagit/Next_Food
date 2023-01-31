@@ -98,6 +98,10 @@
   color: var(--color-primary-accent);
 }
 
+.mealInfoBtnLikeImage {
+  color: var(--color-primary-accent);
+}
+
 @media only screen and (max-width: 600px) {
   .topContainer {
     flex-direction: column;

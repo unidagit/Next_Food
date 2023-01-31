@@ -1,0 +1,11 @@
+.LikeSvg {
+  fill: var(--color-primary);
+  stroke-width: 8;
+  stroke: var(--color-primary);
+}
+
+.LikeSvg:hover {
+  fill: var(--color-primary-accent);
+  stroke-width: 8;
+  stroke: var(--color-primary-accent);
+}
