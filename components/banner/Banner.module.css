@@ -1,4 +1,30 @@
-.container {
+.bannerContainer {
   background-color: blueviolet;
-  height: 380px;
+  margin: 0 auto;
+  /* height: 350px; */
+}
+
+/* .nextImg {
+  position: absolute;
+  right: 50px;
+  z-index: 99;
+}
+
+.prevImg {
+  position: absolute;
+  left: 30px;
+  z-index: 99;
+  cursor: pointer;
+} */
+
+.sliderContainer {
+  height: 350px;
+}
+
+.image {
+  object-fit: cover;
+  width: 100% !important;
+  position: relative !important;
+  box-sizing: border-box;
+  overflow: hidden;
 }
