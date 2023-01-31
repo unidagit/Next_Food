@@ -1,4 +1,8 @@
 .customImage {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  /* height: unset !important; */
   border-radius: 0.8rem;
   box-sizing: border-box;
 }

@@ -5,9 +5,8 @@ import styles from "./MealImage.module.css";
 function MealImage({ imageAddress }: { imageAddress: string }) {
   return (
     <Image
+      fill
       src={imageAddress}
-      width={200}
-      height={200}
       className={styles.customImage}
       alt="mealsImage"
       placeholder="blur" // 추가
