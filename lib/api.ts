@@ -74,6 +74,12 @@ export interface IselectMeal {
   strYoutube: string;
 }
 
+export interface IsearchMeal {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+}
+
 export const getCategories = async () => {
   const res = await axios.get(`${BASE_URL}/categories.php`);
   return res.data.categories;
@@ -88,4 +94,10 @@ export const getSelectMeal = async ({ queryKey }: any) => {
   const res = await axios.get(`${BASE_URL}/lookup.php?i=${queryKey[1]}`);
   console.log(res);
   return res.data?.meals?.[0];
+};
+
+export const getSearchMeal = async ({ queryKey }: any) => {
+  const res = await axios.get(`${BASE_URL}/search.php?s=${queryKey[1]}`);
+  console.log(res);
+  return res.data?.meals[0];
 };
