@@ -17,7 +17,7 @@ function Provider({ children }: ProviderProps) {
     },
   });
   return (
-    <ThemeProvider enableSystem defaultTheme="light">
+    <ThemeProvider enableSystem={true} defaultTheme="light">
       <QueryClientProvider client={queryClient}>
         {children}
         <ReactQueryDevtools initialIsOpen={false} />

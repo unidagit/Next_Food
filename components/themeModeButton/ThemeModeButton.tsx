@@ -1,38 +1,30 @@
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useState } from "react";
 import Light from "../../images/light.svg";
 import Dark from "../../images/dark.svg";
 
 function ThemeModeButton() {
   const { theme, setTheme } = useTheme();
-  const [colorMode, setColorMode] = useState(false);
+  console.log(theme);
+  const localTheme = window.localStorage.getItem("theme");
 
-  const handleOnLightClick = () => {
-    setTheme("light");
-    setColorMode(!colorMode);
-  };
-
-  const handleOnDarkClick = () => {
-    setTheme("dark");
-    setColorMode(!colorMode);
+  const themeModeHandle = () => {
+    if (localTheme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   };
 
   return (
     <>
-      {colorMode ? (
-        <>
-          <button onClick={handleOnLightClick}>
-            <Image src={Light} alt="Light" width={24} />
-          </button>
-        </>
-      ) : (
-        <>
-          <button onClick={handleOnDarkClick}>
-            <Image src={Dark} alt="Dark" width={24} />
-          </button>
-        </>
-      )}
+      <button onClick={themeModeHandle}>
+        {theme === "light" ? (
+          <Image src={Dark} alt="a" width={24} />
+        ) : (
+          <Image src={Light} alt="a" height={24} width={24} />
+        )}
+      </button>
     </>
   );
 }
