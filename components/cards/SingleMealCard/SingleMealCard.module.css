@@ -1,0 +1,10 @@
+.mealCardBox {
+  color: var(--color-primary);
+  cursor: pointer;
+  text-align: center;
+  width: 25%;
+}
+
+.mealCardBox:hover {
+  color: var(--color-primary-accent);
+}
