@@ -12,7 +12,10 @@
   flex: 1;
   display: flex;
   font-weight: 800;
-  /* justify-content: center; */
+}
+
+.center {
+  flex: 2;
 }
 
 .right {
@@ -37,4 +40,10 @@
 
 .foodButton:hover {
   color: var(--color-primary-accent);
+}
+
+@media only screen and (max-width: 600px) {
+  .center {
+    display: none;
+  }
 }
