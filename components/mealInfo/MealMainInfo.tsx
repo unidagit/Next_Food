@@ -1,12 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import { IselectMeal } from "../../lib/api";
-import { ButtonLink } from "../buttons/Button";
 import MealImage from "../img/MealImage";
 import styles from "./MealMainInfo.module.css";
-import Like from "../../images/like.svg";
 import PlayButton from "../../images/playbutton.svg";
 import LikeSvgComponent from "../icon/Like";
+import { ButtonLink } from "../buttons/Button";
 
 function MealMainInfo({ data }: { data: IselectMeal }) {
   return (
