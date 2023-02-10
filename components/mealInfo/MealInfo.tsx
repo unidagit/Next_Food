@@ -1,18 +1,12 @@
 import { IselectMeal } from "../../lib/api";
-import { ButtonLink } from "../buttons/Button";
-import MealImage from "../img/MealImage";
-import Loading from "../loading/Loading";
 import MealMainInfo from "./MealMainInfo";
-
-// import MealMainInfo from "./MealMainInfo";
-// import MealNutrient from "./MealNutrient";
-// import MealRecipe from "./MealRecipe";
+import styles from "./MealMainInfo.module.css";
 
 function MealInfo({ data }: { data: IselectMeal }) {
   console.log(data);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <MealMainInfo data={data} />
       <p>{data?.strInstructions}</p>
     </div>
