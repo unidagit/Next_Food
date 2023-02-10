@@ -1,5 +1,10 @@
 .footer {
-  background-color: lightgrey;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: black;
+  color: white;
   text-align: center;
-  padding: 3rem 0rem;
+  padding: 2rem;
+  font-size: 0.8rem;
 }
