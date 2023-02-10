@@ -1,6 +1,6 @@
 import styles from "./SearchFood.module.css";
 
-function SearchFood({ handleChange }: { handleChange: () => void }) {
+function SearchFood({ handleChange }: any) {
   return (
     <div>
       <input
