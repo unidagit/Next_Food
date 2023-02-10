@@ -1,5 +1,5 @@
 import React from "react";
-import MealsForm from "../../containers/MealsForm";
+import MealsForm from "../../containers/mealsForm/MealsForm";
 
 function Mealspage() {
   return (

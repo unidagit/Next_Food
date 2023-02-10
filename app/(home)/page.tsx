@@ -1,9 +1,12 @@
-import Banner from "../../components/banner/Banner";
+import React from "react";
+import HomeForm from "../../containers/homeForm/HomeForm";
 
-export default function Home() {
+function Homepage() {
   return (
-    <div>
-      <Banner />
-    </div>
+    <>
+      <HomeForm />
+    </>
   );
 }
+
+export default Homepage;
