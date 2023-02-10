@@ -99,5 +99,5 @@ export const getSelectMeal = async ({ queryKey }: any) => {
 export const getSearchMeal = async ({ queryKey }: any) => {
   const res = await axios.get(`${BASE_URL}/search.php?s=${queryKey[1]}`);
   console.log(res);
-  return res.data?.meals[0];
+  return res.data?.meals[0] || null;
 };
