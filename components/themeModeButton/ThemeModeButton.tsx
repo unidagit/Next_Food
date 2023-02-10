@@ -7,25 +7,18 @@ import { useEffect } from "react";
 function ThemeModeButton() {
   const { theme, setTheme } = useTheme();
   console.log(theme);
-  const localTheme = window.localStorage.getItem("theme");
 
   const themeModeHandle = () => {
-<<<<<<< HEAD
-    if (theme === "light") {
-=======
-    if (localTheme === "light") {
->>>>>>> f21463fffbc8c0017718d5cad176971dffe45c86
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   useEffect(() => {
-    if (!window.localStorage.getItem("theme")) {
-      setTheme("light");
+    if (window.localStorage.getItem("theme") === "dark") {
+      return setTheme("dark");
+    } else {
+      return setTheme("light");
     }
-  }, []);
+  }, [setTheme]);
 
   return (
     <>
