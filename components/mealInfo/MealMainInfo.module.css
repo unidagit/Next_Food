@@ -1,3 +1,7 @@
+.wrapper {
+  min-height: 100vh;
+}
+
 .topContainer {
   display: flex;
   gap: 3rem;
