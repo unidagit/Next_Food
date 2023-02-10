@@ -1,0 +1,15 @@
+.itemContainer {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  /* background-color: aqua; */
+}
+
+.box {
+  grid-template-columns: 1fr 2fr 100px 25%;
+  object-fit: cover;
+  width: 200px;
+  height: 300px;
+}
