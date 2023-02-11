@@ -75,7 +75,7 @@ export interface IselectMeal {
 }
 
 export interface IsearchMeal {
-  idMeal: string;
+  idMeal?: string;
   strMeal: string;
   strMealThumb: string;
 }
@@ -99,5 +99,5 @@ export const getSelectMeal = async ({ queryKey }: any) => {
 export const getSearchMeal = async ({ queryKey }: any) => {
   const res = await axios.get(`${BASE_URL}/search.php?s=${queryKey[1]}`);
   console.log(res);
-  return res.data?.meals[0] || null;
+  return res.data?.meals || null;
 };
