@@ -1,5 +1,12 @@
 import axios from "axios";
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
+const API_URL = "https://mandarin.api.weniv.co.kr";
+
+const baseInstance = axios.create({
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 export interface ICategoriesProps {
   setSelectCategory: any;
@@ -80,6 +87,13 @@ export interface IsearchMeal {
   strMealThumb: string;
 }
 
+export interface IuserInterface {
+  email: string;
+  password: string;
+  accountname: string;
+  username: string;
+}
+
 export const getCategories = async () => {
   const res = await axios.get(`${BASE_URL}/categories.php`);
   return res.data.categories;
@@ -92,12 +106,37 @@ export const getQueryMeals = async ({ queryKey }: any) => {
 
 export const getSelectMeal = async ({ queryKey }: any) => {
   const res = await axios.get(`${BASE_URL}/lookup.php?i=${queryKey[1]}`);
-  console.log(res);
   return res.data?.meals?.[0];
 };
 
 export const getSearchMeal = async ({ queryKey }: any) => {
   const res = await axios.get(`${BASE_URL}/search.php?s=${queryKey[1]}`);
-  console.log(res);
   return res.data?.meals || null;
+};
+
+export const postEmailValid = async (userEmail: string) => {
+  const reqData = {
+    user: { email: userEmail },
+  };
+  const res = await baseInstance.post(`${API_URL}/user/emailvalid`, reqData);
+  console.log(res);
+  return res.data;
+};
+
+export const postAccountNameValid = async (accountname: string) => {
+  const reqData = {
+    user: { accountname },
+  };
+  const res = await baseInstance.post(
+    `${API_URL}/user/accountnamevalid`,
+    reqData
+  );
+  console.log(res);
+  return res.data;
+};
+
+export const postJoinForm = async (user: IuserInterface) => {
+  const res = await baseInstance.post(`${API_URL}/user`, { user });
+  console.log(res);
+  return res.data;
 };
