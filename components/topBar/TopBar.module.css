@@ -1,0 +1,21 @@
+.container {
+  padding-top: 18px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+.joinText {
+  margin-right: 12px;
+  color: var(--color-primary-accent);
+  cursor: pointer;
+}
+
+.loginText:hover {
+  cursor: pointer;
+  color: var(--color-primary);
+}
