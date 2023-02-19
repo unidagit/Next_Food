@@ -1,6 +1,8 @@
 "use client";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import React, { useState, useCallback, ChangeEvent, useEffect } from "react";
+import { ErrorText } from "../../components/text/Text";
 import useInput from "../../hooks/useInput/useInput";
 import {
   IuserInterface,
@@ -11,6 +13,8 @@ import {
 import styles from "./SignUpForm.module.css";
 
 function SignUpForm() {
+  const router = useRouter();
+
   const [email, onChangeEmail] = useInput("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [isValidatedEmail, setIsValidatedEmail] = useState(false);
@@ -22,8 +26,6 @@ function SignUpForm() {
   const [isCheckedAccountname, setIsCheckedAccountname] = useState("");
 
   const [username, onChangeUsername] = useInput("");
-  const [usernameErrorMessage, setUsernameErrorMessage] = useState("");
-  const [isValidatedUsername, setIsValidatedUsername] = useState(false);
 
   const [password, onChangePassWord] = useInput("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
@@ -143,7 +145,7 @@ function SignUpForm() {
     postJoinForm(user)
   );
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const user: IuserInterface = {
@@ -155,6 +157,10 @@ function SignUpForm() {
     joinFormData(user, {
       onSuccess: (data) => {
         console.log(data.message);
+        router.push("/signIn");
+      },
+      onError: (error) => {
+        console.log(error); //404페이지 나중에 띄우기
       },
     });
     console.log(user);
@@ -175,8 +181,8 @@ function SignUpForm() {
               onChange={onChangeEmail}
             />
             <button onClick={(e) => handleEmailCheck(e)}>중복확인</button>
-            <p className={styles.error}>{emailErrorMessage}</p>
-            <p className={styles.error}>{isCheckedEmail}</p>
+            <ErrorText>{emailErrorMessage}</ErrorText>
+            <ErrorText>{isCheckedEmail}</ErrorText>
           </div>
 
           <div>
@@ -198,8 +204,8 @@ function SignUpForm() {
               onChange={onChangeAccountname}
             />
             <button onClick={(e) => handleAccountnameCheck(e)}>중복확인</button>
-            <p className={styles.error}>{accountnameErrorMessage}</p>
-            <p className={styles.error}>{isCheckedAccountname}</p>
+            <ErrorText>{accountnameErrorMessage}</ErrorText>
+            <ErrorText>{isCheckedAccountname}</ErrorText>
           </div>
 
           <div>
@@ -211,7 +217,7 @@ function SignUpForm() {
               required
               onChange={onChangePassWord}
             />
-            <p className={styles.error}>{passwordErrorMessage}</p>
+            <ErrorText>{passwordErrorMessage}</ErrorText>
           </div>
 
           <div>
@@ -226,7 +232,7 @@ function SignUpForm() {
           </div>
 
           {passwordError && (
-            <p className={styles.error}>비밀번호가 일치하지 않습니다.</p>
+            <ErrorText>비밀번호가 일치하지 않습니다.</ErrorText>
           )}
           <button>회원가입</button>
         </form>
