@@ -90,8 +90,8 @@ export interface IsearchMeal {
 export interface IuserInterface {
   email: string;
   password: string;
-  accountname: string;
-  username: string;
+  accountname?: string;
+  username?: string;
 }
 
 export const getCategories = async () => {
@@ -137,6 +137,12 @@ export const postAccountNameValid = async (accountname: string) => {
 
 export const postJoinForm = async (user: IuserInterface) => {
   const res = await baseInstance.post(`${API_URL}/user`, { user });
+  console.log(res);
+  return res.data;
+};
+
+export const postLoginForm = async (user: IuserInterface) => {
+  const res = await baseInstance.post(`${API_URL}/user/login`, { user });
   console.log(res);
   return res.data;
 };
