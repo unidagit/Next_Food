@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "next-themes";
 import React from "react";
+import { RecoilRoot } from "recoil";
 
 type ProviderProps = {
   children: React.ReactNode;
@@ -18,10 +19,12 @@ function Provider({ children }: ProviderProps) {
   });
   return (
     <ThemeProvider enableSystem={true} defaultTheme="light">
-      <QueryClientProvider client={queryClient}>
-        {children}
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
+      <RecoilRoot>
+        <QueryClientProvider client={queryClient}>
+          {children}
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </RecoilRoot>
     </ThemeProvider>
   );
 }
