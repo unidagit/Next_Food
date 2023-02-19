@@ -12,4 +12,8 @@ function Text({
   return <p className={clsx(styles.text, className)}>{children}</p>;
 }
 
-export default Text;
+function ErrorText({ children }: { children: React.ReactNode }) {
+  return <p className={styles.error}>{children}</p>;
+}
+
+export { Text, ErrorText };
