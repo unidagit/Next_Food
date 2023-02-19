@@ -6,6 +6,7 @@ import Logo from "../../images/LogoOrange.svg";
 import ThemeModeButton from "../themeModeButton/ThemeModeButton";
 import LikeSvgComponent from "../icon/Like";
 import SearchFood from "../searchFood/SearchFood";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -32,6 +33,9 @@ function Navbar() {
         </li>
 
         <li className={styles.right}>
+          <Link className={styles.foodButton} href="/recipe">
+            <p className={styles.mealsText}>Recipe</p>
+          </Link>
           <Link className={styles.foodButton} href="/meals">
             <p className={styles.mealsText}>Meals</p>
           </Link>
