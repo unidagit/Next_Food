@@ -15,7 +15,8 @@
 }
 
 .center {
-  flex: 2;
+  flex: 1;
+  margin-right: 2rem;
 }
 
 .right {

@@ -4,7 +4,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
-  /* background-color: aqua; */
 }
 
 .box {

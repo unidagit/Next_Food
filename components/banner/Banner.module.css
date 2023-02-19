@@ -4,20 +4,19 @@
 }
 
 .sliderContainer {
+  position: relative;
   height: 25rem;
   overflow: hidden;
 }
 
 .image {
   object-fit: cover;
-  width: 100% !important;
-  position: relative !important;
   box-sizing: border-box;
   overflow: hidden;
 }
 
 @media only screen and (max-width: 600px) {
   .sliderContainer {
-    height: 13rem;
+    height: 20rem;
   }
 }
