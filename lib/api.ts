@@ -8,6 +8,13 @@ const baseInstance = axios.create({
   },
 });
 
+const authInstance = axios.create({
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token_")}`,
+    "Content-Type": "application/json",
+  },
+});
+
 export interface ICategoriesProps {
   setSelectCategory: any;
   categories?: ICategories[];
@@ -94,6 +101,13 @@ export interface IuserInterface {
   username?: string;
 }
 
+export interface IproductInterface {
+  itemName: string;
+  price: number;
+  link: string;
+  itemImage: string;
+}
+
 export const getCategories = async () => {
   const res = await axios.get(`${BASE_URL}/categories.php`);
   return res.data.categories;
@@ -144,5 +158,16 @@ export const postJoinForm = async (user: IuserInterface) => {
 export const postLoginForm = async (user: IuserInterface) => {
   const res = await baseInstance.post(`${API_URL}/user/login`, { user });
   console.log(res);
+  return res.data;
+};
+
+export const postRecipeForm = async (product: IproductInterface) => {
+  const res = await authInstance.post(`${API_URL}/product`, { product });
+  console.log(res);
+  return res.data;
+};
+
+export const getRecipeList = async (accountname: string | null) => {
+  const res = await authInstance.get(`${API_URL}/product/${accountname}`);
   return res.data;
 };
