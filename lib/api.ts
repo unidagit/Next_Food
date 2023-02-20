@@ -108,6 +108,19 @@ export interface IproductInterface {
   itemImage: string;
 }
 
+export interface IrecipeListData {
+  data: number;
+  product: IrecipeProduct[];
+}
+
+export interface IrecipeProduct {
+  id: string;
+  itemName: string;
+  price: number;
+  link: string;
+  itemImage: string;
+}
+
 export const getCategories = async () => {
   const res = await axios.get(`${BASE_URL}/categories.php`);
   return res.data.categories;
