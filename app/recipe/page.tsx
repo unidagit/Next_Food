@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Wrapper from "../../components/common/wrapper/Wrapper";
 import RecipeListForm from "../../containers/recipeListForm/RecipeListForm";
