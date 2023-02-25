@@ -3,6 +3,8 @@
 ## 배포 URL
 
 - URL : https://next-food-sage.vercel.app/
+- id : howfood@naver.com
+- password : 123456
 
 <br>
 
@@ -41,10 +43,24 @@ https://friendly-lifeboat-038.notion.site/Next-js-13-411ccfddfa6f49569eb6dc840bc
 - [x] 검색창에 음식이름을 입력하면 실시간으로 검색결과를 보여줍니다. 검색창에 음식이름을 지우면 바로 홈화면을 보여줍니다.
 - [x] 검색결과가 없다면 \_\_에 대한 검색결과가 없습니다 라는 문구를 보여줍니다.
 
+### SignUp page
+
+- [x] 이메일, 닉네임 중복확인 기능 구현했습니다.
+- [x] 실시간 유효성 검사를 구현했습니다.
+
+### SignIn page
+
+- [x] 로그인 구현했습니다.
+
+### Recipe page
+
+- [ ]
+
 <br>
 
 ## 추가 구현 사항
 
+- 나만의 레시피일기장 CRUD 구현중
 - 좋아요 기능
 - 음식 영양성분 탭 만들기
 - 오늘의 레시피 추천 랜덤기능
