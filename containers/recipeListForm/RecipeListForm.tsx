@@ -1,17 +1,10 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import { getRecipeList, IrecipeListData } from "../../lib/api";
 
 function RecipeListForm() {
-  const [accountname, setAccountname] = useState("");
-
-  useEffect(() => {
-    const username = localStorage.getItem("account");
-    if (!!username) {
-      setAccountname(username);
-    }
-  }, []);
+  const accountname =
+    typeof window !== "undefined" ? localStorage.getItem("account") : null;
 
   console.log(accountname);
 

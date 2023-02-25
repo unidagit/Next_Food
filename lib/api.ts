@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
 const API_URL = "https://mandarin.api.weniv.co.kr";
 
@@ -8,12 +9,17 @@ const baseInstance = axios.create({
   },
 });
 
+const accessToken =
+  typeof window !== "undefined" ? localStorage.getItem("token_") : null;
+
 const authInstance = axios.create({
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("token_")}`,
+    Authorization: `Bearer ${accessToken}`,
     "Content-Type": "application/json",
   },
 });
+
+console.log(accessToken);
 
 export interface ICategoriesProps {
   setSelectCategory: any;
