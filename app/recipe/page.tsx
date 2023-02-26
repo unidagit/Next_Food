@@ -7,7 +7,7 @@ function RecipePage() {
   return (
     <>
       <Wrapper>
-        <Link href="/recipe/write">레시피 글쓰기</Link>
+        <Link href="/write">레시피 글쓰기</Link>
         <RecipeListForm />
       </Wrapper>
     </>
