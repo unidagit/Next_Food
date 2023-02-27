@@ -3,8 +3,6 @@
 ## 배포 URL
 
 - URL : https://next-food-sage.vercel.app/
-- id : howfood@naver.com
-- password : 123456
 
 <br>
 
