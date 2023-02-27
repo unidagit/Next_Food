@@ -1,0 +1,9 @@
+.recipeCardBox {
+  color: var(--color-primary);
+  cursor: pointer;
+  text-align: center;
+}
+
+.recipeCardBox:hover {
+  color: var(--color-primary-accent);
+}

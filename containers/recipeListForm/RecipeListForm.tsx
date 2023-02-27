@@ -1,5 +1,6 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
+import RecipeCard from "../../components/cards/RecipeCard/RecipeCard";
 import { getRecipeList, IrecipeListData } from "../../lib/api";
 
 function RecipeListForm() {
@@ -21,7 +22,9 @@ function RecipeListForm() {
       </strong>
 
       {recipeListData &&
-        recipeListData.product.map((it) => <h2 key={it.id}>{it.itemName}</h2>)}
+        recipeListData.product.map((recipe) => (
+          <RecipeCard key={recipe.id} recipeInfo={recipe} />
+        ))}
     </>
   );
 }
