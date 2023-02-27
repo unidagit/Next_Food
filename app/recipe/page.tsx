@@ -6,7 +6,8 @@ import RecipeListForm from "../../containers/recipeListForm/RecipeListForm";
 
 function RecipePage() {
   const router = useRouter();
-  const token = localStorage.getItem("token_");
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("account") : null;
 
   if (!token) {
     alert("로그인을 해주세요.");
