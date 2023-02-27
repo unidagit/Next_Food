@@ -190,3 +190,10 @@ export const getRecipeList = async (accountname: string | null) => {
   const res = await authInstance.get(`${API_URL}/product/${accountname}`);
   return res.data;
 };
+
+export const postImageUpload = async (formImg: FormData) => {
+  const {
+    data: { filename },
+  } = await axios.post(`${API_URL}/image/uploadfile`, formImg);
+  return filename;
+};
