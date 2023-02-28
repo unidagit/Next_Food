@@ -1,4 +1,6 @@
 .recipeCardBox {
+  height: 300px;
+  margin-top: 2rem;
   color: var(--color-primary);
   cursor: pointer;
   text-align: center;
