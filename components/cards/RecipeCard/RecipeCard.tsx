@@ -10,7 +10,7 @@ function RecipeCard({ recipeInfo }: { recipeInfo: IrecipeProduct }) {
   return (
     <div
       className={styles.recipeCardBox}
-      onClick={() => router.push(`/recipe/id?q=${recipeInfo.id}`)}
+      onClick={() => router.push(`/recipe/id?r=${recipeInfo.id}`)}
     >
       <MealImage imageAddress={recipeInfo.itemImage} />
       <p>{recipeInfo.itemName}</p>
