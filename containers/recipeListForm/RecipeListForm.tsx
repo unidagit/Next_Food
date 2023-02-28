@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import RecipeCard from "../../components/cards/RecipeCard/RecipeCard";
 import { getRecipeList, IrecipeListData } from "../../lib/api";
+import styles from "./RecipeListForm.module.css";
 
 function RecipeListForm() {
   const accountname =
@@ -21,10 +22,12 @@ function RecipeListForm() {
         현재 {recipeListData?.data}개의 레시피가 기록되어 있습니다.
       </strong>
 
-      {recipeListData &&
-        recipeListData.product.map((recipe) => (
-          <RecipeCard key={recipe.id} recipeInfo={recipe} />
-        ))}
+      <div className={styles.container}>
+        {recipeListData &&
+          recipeListData.product.map((recipe) => (
+            <RecipeCard key={recipe.id} recipeInfo={recipe} />
+          ))}
+      </div>
     </>
   );
 }

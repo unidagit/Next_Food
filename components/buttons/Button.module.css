@@ -1,11 +1,18 @@
 .buttonLink {
   /* width: 100%; */
   padding: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  /* background-color: blue; */
+  background-color: var(--color-primary-accent);
+  font-weight: 800;
+  color: white;
+}
+
+.buttonLink:hover {
+  background-color: var(--color-primary-accent);
+  opacity: 0.85;
 }
 
 .buttonCatgeory {
