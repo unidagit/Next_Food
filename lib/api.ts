@@ -1,4 +1,5 @@
 import axios from "axios";
+import getUserToken from "../utils/getUserToken";
 
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
 const API_URL = "https://mandarin.api.weniv.co.kr";
@@ -9,17 +10,14 @@ const baseInstance = axios.create({
   },
 });
 
-const accessToken =
-  typeof window !== "undefined" ? localStorage.getItem("token_") : null;
+const userToken = getUserToken();
 
 const authInstance = axios.create({
   headers: {
-    Authorization: `Bearer ${accessToken}`,
+    Authorization: `Bearer ${userToken}`,
     "Content-Type": "application/json",
   },
 });
-
-console.log(accessToken);
 
 export interface ICategoriesProps {
   setSelectCategory: any;
@@ -196,4 +194,18 @@ export const postImageUpload = async (formImg: FormData) => {
     data: { filename },
   } = await axios.post(`${API_URL}/image/uploadfile`, formImg);
   return filename;
+};
+
+export const getMyRecipe = async (recipeId: string | null) => {
+  const {
+    data: { product },
+  } = await authInstance.get(`${API_URL}/product/detail/${recipeId}`);
+  console.log(product);
+  return product;
+};
+
+export const apiDeleteMyRecipe = async (recipeId: string | null) => {
+  const res = await authInstance.delete(`${API_URL}/product/${recipeId}`);
+  console.log(res);
+  return res;
 };
