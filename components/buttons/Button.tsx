@@ -4,6 +4,22 @@ import React from "react";
 import { ICategories } from "../../lib/api";
 import styles from "./Button.module.css";
 
+function Button({
+  children,
+  className,
+  onClick,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  onClick: any;
+}) {
+  return (
+    <button className={clsx(styles.button, className)} onClick={onClick}>
+      {children}
+    </button>
+  );
+}
+
 function ButtonLink({
   link,
   children,
@@ -46,4 +62,4 @@ function ButtonCatgeory({
   );
 }
 
-export { ButtonLink, ButtonCatgeory };
+export { Button, ButtonLink, ButtonCatgeory };

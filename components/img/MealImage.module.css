@@ -1,6 +1,7 @@
 .customImage {
   object-fit: cover;
   box-sizing: border-box;
+  border-radius: 0.5rem;
 }
 
 .container {
