@@ -1,7 +1,7 @@
-import React from "react";
+import RecipeIdForm from "../../../containers/recipeIdForm/RecipeIdForm";
 
 function RecipeDetailpage() {
-  return <div>RecipeDetail</div>;
+  return <RecipeIdForm />;
 }
 
 export default RecipeDetailpage;
