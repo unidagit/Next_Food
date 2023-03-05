@@ -1,13 +1,13 @@
 import Image from "next/image";
-import React from "react";
 import styles from "./MealImage.module.css";
+import upload from "../../images/upload.jpg";
 
 function MealImage({ imageAddress }: { imageAddress: string }) {
   return (
     <div className={styles.container}>
       <Image
         fill
-        src={imageAddress}
+        src={imageAddress ? imageAddress : upload}
         className={styles.customImage}
         alt="mealsImage"
         placeholder="blur" // 추가
