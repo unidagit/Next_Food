@@ -6,3 +6,14 @@
   overflow: hidden;
   clip-path: polygon(0 0, 0 0, 0, 0);
 }
+
+.formBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputBox {
+  margin-top: 40px;
+}

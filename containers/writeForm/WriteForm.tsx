@@ -1,35 +1,32 @@
 "use client";
-import { useMutation } from "@tanstack/react-query";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useCallback, useRef, useState } from "react";
 import Wrapper from "../../components/common/wrapper/Wrapper";
 import useInput from "../../hooks/useInput/useInput";
 import useTextarea from "../../hooks/useInput/useTextarea";
-import {
-  IproductInterface,
-  postImageUpload,
-  postRecipeForm,
-} from "../../lib/api";
 import styles from "./WriteForm.module.css";
-import food1 from "../../images/food1.jpg";
+import { useImageUploadMutation } from "../../hooks/mutations/useImageUploadMutation";
+import usePostMyRecipeMutation from "../../hooks/mutations/usePostMyRecipeMutation";
+import MealImage from "../../components/img/MealImage";
+
+import { LabelText, SmallText } from "../../components/text/Text";
+import Input from "../../components/input/Input";
+import { Button } from "../../components/buttons/Button";
+import Textarea from "../../components/textarea/Textarea";
+import upload from "../../images/upload.jpg";
 
 function WriteForm() {
   const fileUploadBtn = useRef<HTMLInputElement>(null);
   const router = useRouter();
-  const [itemName, onChangeItemName] = useInput("");
+  const [itemImgName, onChangeItemImgName] = useInput("");
   const [level, onChangeLevel] = useInput("");
   const [recipeInfo, onChangeRecipeInfo] = useTextarea("");
   const [imgFile, setImgFile] = useState("");
   const [targetfile, setTargetfile] = useState<File | null>(null);
 
-  const { mutate: recipeFormData } = useMutation((product: IproductInterface) =>
-    postRecipeForm(product)
-  );
-
-  const { mutate: imageUploadData } = useMutation((formImg: FormData) =>
-    postImageUpload(formImg)
-  );
+  //이미지 post
+  const { mutate: imageUploadData } = useImageUploadMutation();
+  const { mutate: recipeFormData } = usePostMyRecipeMutation();
 
   const onSubmitRecipeForm = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +38,7 @@ function WriteForm() {
       imageUploadData(formImg, {
         onSuccess: (filename) => {
           const product = {
-            itemName: itemName,
+            itemName: itemImgName,
             price: Number(level),
             link: recipeInfo,
             itemImage: `https://mandarin.api.weniv.co.kr/${filename}`,
@@ -66,7 +63,7 @@ function WriteForm() {
     fileUploadBtn?.current?.click();
   }, []);
 
-  //이미지 파일 base64로 변환
+  // 이미지 파일 base64로 변환
   const handleChangeFoodImage = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const reader = new FileReader();
@@ -93,74 +90,58 @@ function WriteForm() {
 
   return (
     <Wrapper>
-      <form onSubmit={onSubmitRecipeForm}>
-        <div>
-          <p>이미지 등록</p>
-          <Image
-            src={imgFile ? imgFile : food1}
-            alt="레시피 이미지"
-            width={50}
-            height={50}
+      <form className={styles.formBox} onSubmit={onSubmitRecipeForm}>
+        <div onClick={handleOpenFile}>
+          <LabelText htmlFor="image">이미지 등록</LabelText>
+          <MealImage imageAddress={imgFile} />
+        </div>
+        <LabelText htmlFor="foodImage">
+          <input
+            className={styles.hidden}
+            ref={fileUploadBtn}
+            name="foodImage"
+            type="file"
+            accept=".jpg, .gif, .png, .jpeg, .bmp, .tif, .heic"
+            onChange={handleChangeFoodImage}
           />
-          <label htmlFor="foodImage">
-            <div>
-              <button onClick={handleOpenFile}>+</button>
-            </div>
-            <input
-              className={styles.hidden}
-              ref={fileUploadBtn}
-              name="foodImage"
-              type="file"
-              accept=".jpg, .gif, .png, .jpeg, .bmp, .tif, .heic"
-              onChange={handleChangeFoodImage}
-            />
-          </label>
+        </LabelText>
+
+        <div>
+          <LabelText htmlFor="itemImgName">음식이름</LabelText>
+          <Input
+            name="itemImgName"
+            value={itemImgName}
+            minLength="2"
+            maxLength="14"
+            placeholder="2 - 15자 이내여야 합니다"
+            onChange={onChangeItemImgName}
+          />
         </div>
 
         <div>
-          <label htmlFor="itemName">
-            음식이름
-            <input
-              value={itemName}
-              type="text"
-              name="itemName"
-              minLength={2}
-              maxLength={14}
-              placeholder="2 - 15자 이내여야 합니다"
-              onChange={onChangeItemName}
-              required
-            />
-          </label>
+          <LabelText htmlFor="level">난이도</LabelText>
+          <Input
+            name="level"
+            value={level}
+            minLength="1"
+            maxLength="1"
+            placeholder="1 - 5이내에 숫자만 입력해주세요"
+            onChange={onChangeLevel}
+          />
         </div>
 
         <div>
-          <label htmlFor="level">
-            난이도
-            <input
-              value={level}
-              type="text"
-              name="level"
-              placeholder="1 - 5이내에 숫자만 입력해주세요"
-              onChange={onChangeLevel}
-              required
-            />
-          </label>
+          <LabelText htmlFor="recipeInfo">레시피 정보</LabelText>
+          <Textarea
+            name="recipeInfo"
+            value={recipeInfo}
+            minLength="1"
+            placeholder="상세한 레시피 정보를 알려주세요"
+            onChange={onChangeRecipeInfo}
+          />
         </div>
 
-        <div>
-          <label htmlFor="recipeInfo">
-            레시피 정보
-            <textarea
-              value={recipeInfo}
-              name="recipeInfo"
-              placeholder="상세한 레시피 정보를 알려주세요"
-              onChange={onChangeRecipeInfo}
-              required
-            />
-          </label>
-        </div>
-
-        <button>레시피 저장</button>
+        <Button>레시피 저장</Button>
       </form>
     </Wrapper>
   );
