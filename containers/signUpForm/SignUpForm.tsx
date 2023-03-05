@@ -2,7 +2,10 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import React, { useState, useCallback, ChangeEvent, useEffect } from "react";
-import { ErrorText } from "../../components/text/Text";
+import { Button } from "../../components/buttons/Button";
+import Wrapper from "../../components/common/wrapper/Wrapper";
+import Input from "../../components/input/Input";
+import { ErrorText, LabelText, TitleText } from "../../components/text/Text";
 import useInput from "../../hooks/useInput/useInput";
 import {
   IuserInterface,
@@ -19,11 +22,13 @@ function SignUpForm() {
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [isValidatedEmail, setIsValidatedEmail] = useState(false);
   const [isCheckedEmail, setIsCheckedEmail] = useState("");
+  const [isDuplicatedEmail, setIsDuplicatedEmail] = useState(false);
 
   const [accountname, onChangeAccountname] = useInput("");
   const [accountnameErrorMessage, setAccountnameErrorMessage] = useState("");
   const [isValidatedAccountname, setIsValidatedAccountname] = useState(false);
   const [isCheckedAccountname, setIsCheckedAccountname] = useState("");
+  const [isDuplicatedAccountname, setIsDuplicatedAccountname] = useState(false);
 
   const [username, onChangeUsername] = useInput("");
 
@@ -33,6 +38,22 @@ function SignUpForm() {
 
   const [passwordCheck, setPasswordCheck] = useState("");
   const [passwordError, setPasswordError] = useState(false);
+  const [isValidatedCheckPassword, setIsValidatedCheckPassword] =
+    useState(false);
+
+  //유효성 검사 완료후 다음으로 넘어가기
+  const passed =
+    isValidatedEmail &&
+    isValidatedAccountname &&
+    isValidatedPassword &&
+    isValidatedCheckPassword &&
+    isDuplicatedEmail &&
+    isDuplicatedAccountname;
+
+  //중복 이메일 검사
+  const { mutate: emailCheckData } = useMutation((email: string) =>
+    postEmailValid(email)
+  );
 
   //이메일 유효성검사
   useEffect(() => {
@@ -50,8 +71,27 @@ function SignUpForm() {
       setIsValidatedEmail(true);
       setEmailErrorMessage("");
       setIsCheckedEmail("");
+
+      emailCheckData(email, {
+        onSuccess: (data) => {
+          if (data.message === "이미 가입된 이메일 주소 입니다.") {
+            setIsCheckedEmail("이미 가입된 이메일 주소 입니다.");
+          } else if (data.message === "사용 가능한 이메일 입니다.") {
+            setIsCheckedEmail("사용 가능한 이메일 입니다.");
+            setIsDuplicatedEmail(true);
+          }
+        },
+        onError: (error) => {
+          console.log(error); //404페이지 나중에 띄우기
+        },
+      });
     }
-  }, [email]);
+  }, [email, emailCheckData]);
+
+  //중복 닉네임 검사
+  const { mutate: accountnameCheckData } = useMutation((accountname: string) =>
+    postAccountNameValid(accountname)
+  );
 
   //유저네임 유효성 검사
   useEffect(() => {
@@ -70,8 +110,22 @@ function SignUpForm() {
       setIsValidatedAccountname(true);
       setAccountnameErrorMessage("");
       setIsCheckedAccountname("");
+
+      accountnameCheckData(accountname, {
+        onSuccess: (data) => {
+          if (data.message === "이미 가입된 계정ID 입니다.") {
+            setIsCheckedAccountname("이미 가입된 계정ID 입니다.");
+          } else if (data.message === "사용 가능한 계정ID 입니다.") {
+            setIsCheckedAccountname("사용 가능한 계정ID 입니다.");
+            setIsDuplicatedAccountname(true);
+          }
+        },
+        onError: (error) => {
+          console.log(error); //404페이지 나중에 띄우기
+        },
+      });
     }
-  }, [accountname]);
+  }, [accountname, accountnameCheckData]);
 
   //비밀번호 유효성 검사
   useEffect(() => {
@@ -91,54 +145,16 @@ function SignUpForm() {
   const onChangePasswordCheck = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       setPasswordCheck(e.target.value);
-      setPasswordError(e.target.value !== password);
+      if (password === e.target.value) {
+        setPasswordError(false);
+        setIsValidatedCheckPassword(true);
+      } else {
+        setPasswordError(true);
+        setIsValidatedCheckPassword(false);
+      }
     },
     [password]
   );
-
-  //중복 이메일 검사
-  const { mutate: emailCheckData } = useMutation((email: string) =>
-    postEmailValid(email)
-  );
-
-  const handleEmailCheck = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    emailCheckData(email, {
-      onSuccess: (data) => {
-        if (data.message === "이미 가입된 이메일 주소 입니다.") {
-          setIsCheckedEmail("이미 가입된 이메일 주소 입니다.");
-        } else if (data.message === "사용 가능한 이메일 입니다.") {
-          setIsCheckedEmail("사용 가능한 이메일 입니다.");
-        }
-      },
-      onError: (error) => {
-        console.log(error); //404페이지 나중에 띄우기
-      },
-    });
-  };
-
-  //중복 닉네임 검사
-  const { mutate: accountnameCheckData } = useMutation((accountname: string) =>
-    postAccountNameValid(accountname)
-  );
-
-  const handleAccountnameCheck = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    accountnameCheckData(accountname, {
-      onSuccess: (data) => {
-        if (data.message === "이미 가입된 계정ID 입니다.") {
-          setIsCheckedAccountname("이미 가입된 계정ID 입니다.");
-        } else if (data.message === "사용 가능한 계정ID 입니다.") {
-          setIsCheckedAccountname("사용 가능한 계정ID 입니다.");
-        }
-      },
-      onError: (error) => {
-        console.log(error); //404페이지 나중에 띄우기
-      },
-    });
-  };
 
   // 폼 모든 데이터 담고 회원가입 전송
   const { mutate: joinFormData } = useMutation((user: IuserInterface) =>
@@ -156,88 +172,88 @@ function SignUpForm() {
     };
     joinFormData(user, {
       onSuccess: (data) => {
-        console.log(data.message);
         router.push("/signIn");
       },
       onError: (error) => {
         console.log(error); //404페이지 나중에 띄우기
       },
     });
-    console.log(user);
   };
 
   return (
-    <div>
-      <div>
-        <h1>회원가입</h1>
-        <form onSubmit={handleSubmit}>
+    <Wrapper>
+      <div className={styles.formWrapper}>
+        <TitleText>회원가입</TitleText>
+        <form className={styles.formBox} onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="userEmail">이메일</label>
-            <input
-              name="userEmail"
-              value={email}
-              placeholder="Email"
-              required
-              onChange={onChangeEmail}
-            />
-            <button onClick={(e) => handleEmailCheck(e)}>중복확인</button>
+            <LabelText htmlFor="userEmail">이메일</LabelText>
+            <div className={styles.duplicationBox}>
+              <Input
+                name="userEmail"
+                value={email}
+                placeholder="이메일을 입력해주세요"
+                onChange={onChangeEmail}
+              />
+            </div>
             <ErrorText>{emailErrorMessage}</ErrorText>
             <ErrorText>{isCheckedEmail}</ErrorText>
           </div>
 
           <div>
-            <label htmlFor="username">사용자 이름</label>
-            <input
-              name="username"
+            <LabelText htmlFor="userName">이름</LabelText>
+            <Input
+              name="userName"
               value={username}
-              required
+              placeholder="이름을 입력해주세요"
               onChange={onChangeUsername}
             />
           </div>
 
           <div>
-            <label htmlFor="accountname">닉네임</label>
-            <input
-              name="accountname"
-              value={accountname}
-              required
-              onChange={onChangeAccountname}
-            />
-            <button onClick={(e) => handleAccountnameCheck(e)}>중복확인</button>
+            <LabelText htmlFor="accountname">닉네임</LabelText>
+            <div className={styles.duplicationBox}>
+              <Input
+                name="accountname"
+                value={accountname}
+                placeholder="닉네임을 입력해주세요"
+                onChange={onChangeAccountname}
+              />
+            </div>
             <ErrorText>{accountnameErrorMessage}</ErrorText>
             <ErrorText>{isCheckedAccountname}</ErrorText>
           </div>
 
           <div>
-            <label htmlFor="userPassword">비밀번호</label>
-            <input
+            <LabelText htmlFor="userPassword">비밀번호</LabelText>
+            <Input
               name="userPassword"
               value={password}
               type="password"
-              required
+              placeholder="비밀번호를 입력해주세요"
               onChange={onChangePassWord}
             />
             <ErrorText>{passwordErrorMessage}</ErrorText>
           </div>
 
           <div>
-            <label htmlFor="userPasswordCheck">비밀번호 확인</label>
-            <input
-              name="userPassword"
+            <LabelText htmlFor="userPasswordCheck">비밀번호 확인</LabelText>
+            <Input
+              name="userPasswordCheck"
               value={passwordCheck}
               type="password"
-              required
+              placeholder="비밀번호를 다시 한번 입력해주세요"
               onChange={onChangePasswordCheck}
             />
+            {passwordError && (
+              <ErrorText>비밀번호가 일치하지 않습니다.</ErrorText>
+            )}
           </div>
-
-          {passwordError && (
-            <ErrorText>비밀번호가 일치하지 않습니다.</ErrorText>
-          )}
-          <button>회원가입</button>
+          <div className={styles.saveBox}>
+            <Button disabled={passed ? false : true}>회원가입</Button>
+          </div>
         </form>
       </div>
-    </div>
+    </Wrapper>
   );
 }
 
