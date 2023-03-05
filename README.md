@@ -1,8 +1,6 @@
 # Next_Food
 
-## 배포 URL
 
-- URL : https://next-food-sage.vercel.app/
 
 <br>
 
