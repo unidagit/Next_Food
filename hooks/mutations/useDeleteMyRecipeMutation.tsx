@@ -11,14 +11,14 @@ function useDeleteMyRecipeMutation() {
     return apiDeleteMyRecipe(recipeId);
   };
 
-  const updateMyRecipe = () => {
+  const successDeleteMyRecipe = () => {
     queryClient.invalidateQueries([REACT_QUERY_KEY.GET_RECIPE, accountname]);
     alert("삭제 되었습니다");
   };
 
   const mutation = useMutation({
     mutationFn: deleteMyRecipe,
-    onSuccess: updateMyRecipe,
+    onSuccess: successDeleteMyRecipe,
     onError: (error) => {
       console.log(error);
     },
