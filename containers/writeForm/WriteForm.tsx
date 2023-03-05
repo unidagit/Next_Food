@@ -103,6 +103,7 @@ function WriteForm() {
             type="file"
             accept=".jpg, .gif, .png, .jpeg, .bmp, .tif, .heic"
             onChange={handleChangeFoodImage}
+            required
           />
         </LabelText>
 
