@@ -1,7 +1,36 @@
-.text {
-  font-size: 1rem;
+.errorText {
+  color: var(--color-primary-accent);
+  font-size: 11px;
+  margin-top: 2px;
+  font-weight: 600;
 }
 
-.error {
-  color: red;
+.small {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-primary-text);
+  margin-bottom: 10px;
+}
+
+.labelText {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.smallInfoText {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 10px;
 }

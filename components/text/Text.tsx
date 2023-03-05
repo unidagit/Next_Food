@@ -1,19 +1,37 @@
-import clsx from "clsx";
 import styles from "./Text.module.css";
 
-function Text({
+//error font
+function ErrorText({ children }: { children: React.ReactNode }) {
+  return <p className={styles.errorText}>{children}</p>;
+}
+
+//small font
+function SmallText({ children }: { children: React.ReactNode }) {
+  return <p className={styles.small}>{children}</p>;
+}
+
+//title font
+function TitleText({ children }: { children: React.ReactNode }) {
+  return <h1 className={styles.title}>{children}</h1>;
+}
+
+//SmallInfoText
+function LabelText({
   children,
-  className,
+  htmlFor,
 }: {
   children: React.ReactNode;
-  className?: string;
+  htmlFor: string;
 }) {
-  //Text컴포넌트로 감싸진 내부 요소들이 children으로 들어온다
-  return <p className={clsx(styles.text, className)}>{children}</p>;
+  return (
+    <label className={styles.labelText} htmlFor={htmlFor}>
+      {children}
+    </label>
+  );
 }
 
-function ErrorText({ children }: { children: React.ReactNode }) {
-  return <p className={styles.error}>{children}</p>;
+function SmallInfoText({ children }: { children: React.ReactNode }) {
+  return <p className={styles.smallInfoText}>{children}</p>;
 }
 
-export { Text, ErrorText };
+export { ErrorText, SmallText, LabelText, TitleText, SmallInfoText };
