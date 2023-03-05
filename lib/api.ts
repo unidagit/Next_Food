@@ -209,3 +209,16 @@ export const apiDeleteMyRecipe = async (recipeId: string | null) => {
   console.log(res);
   return res;
 };
+
+export const apiUpdateMyRecipe = async ({
+  id,
+  product,
+}: {
+  id: string;
+  product: IproductInterface;
+}) => {
+  const res = await authInstance.put(`${API_URL}/product/${id}`, {
+    product,
+  });
+  return res;
+};
