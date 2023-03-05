@@ -7,13 +7,7 @@ import { Button } from "../../buttons/Button";
 import MealImage from "../../img/MealImage";
 import styles from "./RecipeCard.module.css";
 
-function RecipeCard({
-  recipeInfo,
-}: // handleClickDelete,
-{
-  recipeInfo: IrecipeProduct;
-  // handleClickDelete: any;
-}) {
+function RecipeCard({ recipeInfo }: { recipeInfo: IrecipeProduct }) {
   console.log(recipeInfo);
   const router = useRouter();
 
@@ -29,10 +23,6 @@ function RecipeCard({
   //   }
   // );
 
-  const handleClickUpdate = () => {
-    console.log("수정하기");
-  };
-
   return (
     <>
       <div className={styles.recipeCardBox}>
@@ -45,7 +35,6 @@ function RecipeCard({
         <ul className={styles.buttonBox}>
           <li className={styles.foodName}>{recipeInfo.itemName}</li>
           <li>
-            <Button onClick={handleClickUpdate}>수정</Button>
             <Button
               className={styles.delete}
               onClick={() =>
