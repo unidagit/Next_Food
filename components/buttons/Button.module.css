@@ -1,13 +1,18 @@
 .button {
-  padding: 0.5rem;
+  width: 100%;
+  padding: 0.8rem;
   font-size: 0.8rem;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  font-weight: 800;
+  font-weight: 600;
   margin-right: 0.2rem;
-  color: var(--color-primary-accent);
-  background-color: transparent;
-  border: 1px solid var(--color-primary-accent);
+  color: white;
+  background-color: var(--color-primary-accent);
+}
+
+.button:disabled {
+  opacity: 70%;
+  background-color: var(--color-primary-accent);
 }
 
 .buttonLink {

@@ -6,15 +6,21 @@ import styles from "./Button.module.css";
 
 function Button({
   children,
-  className,
   onClick,
+  disabled,
+  className,
 }: {
   children: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
   className?: string;
-  onClick: any;
 }) {
   return (
-    <button className={clsx(styles.button, className)} onClick={onClick}>
+    <button
+      className={clsx(styles.button, className)}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
@@ -47,8 +53,6 @@ function ButtonCatgeory({
   children: React.ReactNode;
   onClickHandler: any;
 }) {
-  // console.log(children);
-
   return (
     <>
       <button
