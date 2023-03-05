@@ -9,13 +9,23 @@
   /* Light Mode Colors */
   --color-background: #fff;
   --color-primary: #212426;
+  --color-primary-black: #212426;
   --color-primary-accent: #ff4f26;
+  --color-primary-text: #aaaaaa;
+  --color-primary-gray: #9a9a9a;
+  --color-primary-darkgray: #909090;
+  --color-primary-white: #fff;
 }
 
 [data-theme="dark"] {
   --color-background: #212426;
   --color-primary: #fff;
+  --color-primary-black: #212426;
   --color-primary-accent: #ff4f26;
+  --color-primary-text: #fff;
+  --color-primary-gray: #9a9a9a;
+  --color-primary-darkgray: #909090;
+  --color-primary-white: #fff;
 }
 
 * {
