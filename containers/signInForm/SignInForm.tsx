@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { ErrorText } from "../../components/text/Text";
+import { Button } from "../../components/buttons/Button";
+import Wrapper from "../../components/common/wrapper/Wrapper";
+import Input from "../../components/input/Input";
+import { ErrorText, LabelText, TitleText } from "../../components/text/Text";
 import useInput from "../../hooks/useInput/useInput";
 import { IuserInterface, postLoginForm } from "../../lib/api";
 import { isUserAtom } from "../../provider/atom";
@@ -24,6 +27,8 @@ function SignInForm() {
   const [password, onChangePassword] = useInput("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   const [isValidatedPassword, setIsValidatedPassword] = useState(false);
+
+  const passed = isValidatedEmail && isValidatedPassword;
 
   //이메일 유효성검사
   useEffect(() => {
@@ -89,33 +94,41 @@ function SignInForm() {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <form onSubmit={(e) => onSubmitForm(e)}>
-        <div>
-          <label htmlFor="email">이메일</label>
-          <br />
-          <input name="email" value={email} onChange={onChangeEmail} required />
-          <ErrorText>{emailErrorMessage}</ErrorText>
-        </div>
+    <Wrapper>
+      <div className={styles.formWrapper}>
+        <TitleText>로그인</TitleText>
+        <form className={styles.formBox} onSubmit={(e) => onSubmitForm(e)}>
+          <div>
+            <LabelText htmlFor="userEmail">이메일</LabelText>
+            <Input
+              name="userEmail"
+              value={email}
+              placeholder="이메일을 입력해주세요"
+              onChange={onChangeEmail}
+            />
+            <ErrorText>{emailErrorMessage}</ErrorText>
+          </div>
 
-        <div>
-          <label htmlFor="userPassword">비밀번호</label>
-          <br />
-          <input
-            name="userPassword"
-            value={password}
-            type="password"
-            onChange={onChangePassword}
-            required
-          />
-          <ErrorText>{errorMessage}</ErrorText>
-        </div>
-        <div>
-          <button type="submit">로그인</button>
+          <div>
+            <LabelText htmlFor="userPassword">비밀번호</LabelText>
+            <Input
+              name="userPassword"
+              value={password}
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+              onChange={onChangePassword}
+            />
+            <ErrorText>{errorMessage}</ErrorText>
+          </div>
+
+          <Button disabled={passed ? false : true}>로그인</Button>
+        </form>
+
+        <Button className={styles.joinButton}>
           <Link href="/signUp">회원가입</Link>
-        </div>
-      </form>
-    </div>
+        </Button>
+      </div>
+    </Wrapper>
   );
 }
 
