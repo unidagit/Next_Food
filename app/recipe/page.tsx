@@ -1,24 +1,39 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 import Wrapper from "../../components/common/wrapper/Wrapper";
 import RecipeForm from "../../containers/recipeForm/RecipeForm";
 import RecipeListForm from "../../containers/recipeListForm/RecipeListForm";
+import { isUserAtom } from "../../provider/atom";
 
 function RecipePage() {
-  // const router = useRouter();
-  // useEffect(() => {
-  //   const result = localStorage.getItem("accountname");
-  //   if (!result) {
-  //     router.push("/signIn");
-  //     alert("로그인을 해주세요");
-  //   }
-  // }, []);
+  const router = useRouter();
+  const [render, setRender] = useState();
+  const user = useRecoilValue(isUserAtom);
+
+  useEffect(() => {
+    setRender(user);
+  }, [user]);
+
+  useEffect(() => {
+    if (!user) {
+      alert("로그인을 해주세요");
+      router.push("/signIn");
+      return;
+    }
+  }, [user, router]);
 
   return (
     <Wrapper>
-      <RecipeForm />
-      <RecipeListForm />
+      {user ? (
+        <>
+          <RecipeForm />
+          <RecipeListForm />
+        </>
+      ) : (
+        <></>
+      )}
     </Wrapper>
   );
 }
