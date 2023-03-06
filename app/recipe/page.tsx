@@ -4,25 +4,16 @@ import { useEffect, useState } from "react";
 import Wrapper from "../../components/common/wrapper/Wrapper";
 import RecipeForm from "../../containers/recipeForm/RecipeForm";
 import RecipeListForm from "../../containers/recipeListForm/RecipeListForm";
-import getUserAccountname from "../../utils/getUserAccountname";
 
 function RecipePage() {
-  // const [account, setAccount] = useState("");
-  // const router = useRouter();
-  // const accountname = getUserAccountname();
-
-  // const [usesrData, setUserData] = useState("");
-
-  // const userAccountname =
-  //   typeof window !== "undefined" ? localStorage.getItem("accountname") : null;
-
-  // useEffect(() => {
-  //   if (userAccountname) {
-  //     setUserData(userAccountname);
-  //   } else {
-  //     alert("로그인해");
-  //   }
-  // }, []);
+  const router = useRouter();
+  useEffect(() => {
+    const result = localStorage.getItem("accountname");
+    if (!result) {
+      router.push("/signIn");
+      alert("로그인을 해주세요");
+    }
+  }, []);
 
   return (
     <Wrapper>
