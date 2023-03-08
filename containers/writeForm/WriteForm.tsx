@@ -47,7 +47,6 @@ function WriteForm() {
           recipeFormData(product, {
             onSuccess: (data) => {
               router.push("/recipe");
-              console.log(data.product);
             },
             onError: (error) => {
               console.log(error);
@@ -103,7 +102,7 @@ function WriteForm() {
             type="file"
             accept=".jpg, .gif, .png, .jpeg, .bmp, .tif, .heic"
             onChange={handleChangeFoodImage}
-            required
+            // required
           />
         </LabelText>
 
