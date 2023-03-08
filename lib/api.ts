@@ -150,7 +150,6 @@ export const postEmailValid = async (userEmail: string) => {
     user: { email: userEmail },
   };
   const res = await baseInstance.post(`${API_URL}/user/emailvalid`, reqData);
-  console.log(res);
   return res.data;
 };
 
@@ -162,25 +161,21 @@ export const postAccountNameValid = async (accountname: string) => {
     `${API_URL}/user/accountnamevalid`,
     reqData
   );
-  console.log(res);
   return res.data;
 };
 
 export const postJoinForm = async (user: IuserInterface) => {
   const res = await baseInstance.post(`${API_URL}/user`, { user });
-  console.log(res);
   return res.data;
 };
 
 export const postLoginForm = async (user: IuserInterface) => {
   const res = await baseInstance.post(`${API_URL}/user/login`, { user });
-  console.log(res);
   return res.data;
 };
 
 export const postRecipeForm = async (product: IproductInterface) => {
   const res = await authInstance.post(`${API_URL}/product`, { product });
-  console.log(res);
   return res.data;
 };
 
@@ -200,13 +195,11 @@ export const getMyRecipe = async (recipeId: string | null) => {
   const {
     data: { product },
   } = await authInstance.get(`${API_URL}/product/detail/${recipeId}`);
-  console.log(product);
   return product;
 };
 
 export const apiDeleteMyRecipe = async (recipeId: string | null) => {
   const res = await authInstance.delete(`${API_URL}/product/${recipeId}`);
-  console.log(res);
   return res;
 };
 

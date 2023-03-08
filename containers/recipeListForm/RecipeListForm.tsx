@@ -14,7 +14,6 @@ function RecipeListForm() {
     isError,
     error,
   } = useGetMyRecipeQuery(accountname);
-  console.log(recipeListData);
 
   // console.log(accountname);
 

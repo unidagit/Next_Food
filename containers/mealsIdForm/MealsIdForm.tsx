@@ -9,7 +9,6 @@ import MealInfo from "../../components/mealInfo/MealInfo";
 function MealsIdForm() {
   const searchParams = useSearchParams();
   const mealId = searchParams.get("q");
-  console.log(searchParams);
 
   const { data, isLoading, isError, error } = useQuery<IselectMeal, Error>(
     ["selectMeal", mealId],

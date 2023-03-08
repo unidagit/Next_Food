@@ -2,11 +2,7 @@ import React from "react";
 import HomeForm from "../../containers/homeForm/HomeForm";
 
 function Homepage() {
-  return (
-    <>
-      <HomeForm />
-    </>
-  );
+  return <HomeForm />;
 }
 
 export default Homepage;

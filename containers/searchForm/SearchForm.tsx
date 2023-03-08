@@ -24,10 +24,8 @@ function SearchForm() {
     const timeout = setTimeout(() => {
       if (searchKey !== "") {
         refetch();
-        console.log(searchKey);
       } else {
         router.push("/");
-        console.log("홈으로가야됭");
       }
     }, 300);
     return () => {

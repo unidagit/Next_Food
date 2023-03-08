@@ -26,13 +26,11 @@ function RecipePage() {
 
   return (
     <Wrapper>
-      {user ? (
+      {user && (
         <>
           <RecipeForm />
           <RecipeListForm />
         </>
-      ) : (
-        <></>
       )}
     </Wrapper>
   );

@@ -8,20 +8,9 @@ import MealImage from "../../img/MealImage";
 import styles from "./RecipeCard.module.css";
 
 function RecipeCard({ recipeInfo }: { recipeInfo: IrecipeProduct }) {
-  console.log(recipeInfo);
   const router = useRouter();
 
   const { mutate: myRecipeDelete } = useDeleteMyRecipeMutation();
-
-  // const queryClient = useQueryClient();
-  // const { mutate: myRecipeDeleteData } = useMutation(
-  //   (recipeId: string | null) => deleteMyRecipe(recipeId),
-  //   {
-  //     onSuccess: () => {
-  //       queryClient.invalidateQueries(["recipeListData", accountname]);
-  //     },
-  //   }
-  // );
 
   return (
     <>

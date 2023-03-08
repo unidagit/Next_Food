@@ -75,15 +75,12 @@ function SignInForm() {
     };
     loginFormData(user, {
       onSuccess: (data) => {
-        console.log(data);
         if (data.message === "이메일 또는 비밀번호가 일치하지 않습니다.") {
           setErrorMessage("이메일 또는 비밀번호가 일치하지 않습니다.");
         } else {
           localStorage.setItem("account", data.user.accountname);
           localStorage.setItem("token_", data.user.token);
-
           setToken(data.user.token); //로그인했을때 아톰에 넣음
-
           router.push("/");
         }
       },

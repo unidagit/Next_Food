@@ -3,8 +3,6 @@ import MealMainInfo from "./MealMainInfo";
 import styles from "./MealMainInfo.module.css";
 
 function MealInfo({ data }: { data: IselectMeal }) {
-  console.log(data);
-
   return (
     <div className={styles.wrapper}>
       <MealMainInfo data={data} />
