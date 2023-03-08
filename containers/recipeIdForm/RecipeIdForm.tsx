@@ -31,6 +31,8 @@ function RecipeIdForm({
   const [targetfile, setTargetfile] = useState<File | null>(null);
   const [imgFile, setImgFile] = useState(itemImage);
 
+  const [targetImg, setTargetImg] = useState("");
+
   const { mutate: imageUploadData } = useImageUploadMutation();
 
   const { mutate: updateData } = useUpdateMyRecipeMutation();
@@ -56,6 +58,15 @@ function RecipeIdForm({
       if (!!file) {
         reader.readAsDataURL(file);
         e.target.value = "";
+
+        const formImg = new FormData();
+        formImg.append("image", file);
+
+        imageUploadData(formImg, {
+          onSuccess: (filename) => {
+            setTargetImg(`https://mandarin.api.weniv.co.kr/${filename}`);
+          },
+        });
       }
 
       reader.onloadend = () => {
@@ -67,29 +78,26 @@ function RecipeIdForm({
         }
       };
     },
-    []
+    [imageUploadData]
   );
 
-  const onSubmitRecipeForm = (e: React.FormEvent) => {
+  const onSubmitRecipeForm = (e: any) => {
     e.preventDefault();
 
-    if (!!targetfile) {
-      const formImg = new FormData();
-      formImg.append("image", targetfile);
+    console.log(targetfile);
+    console.log(e.target.foodImage.files);
 
-      imageUploadData(formImg, {
-        onSuccess: (filename) => {
-          const product = {
-            itemName: localName,
-            price: Number(localNumber),
-            link: localInfo,
-            itemImage: `https://mandarin.api.weniv.co.kr/${filename}`,
-          };
+    // if (!!targetfile) {
 
-          updateData({ product, id });
-        },
-      });
-    }
+    const product = {
+      itemName: localName,
+      price: Number(localNumber),
+      link: localInfo,
+      itemImage: targetfile ? targetImg : itemImage,
+    };
+    updateData({ product, id });
+
+    // }
   };
 
   return (
@@ -172,7 +180,7 @@ function RecipeIdForm({
           </div>
         ) : (
           <div className={styles.saveBox}>
-            <Button onClick={toggleIsEdit}>수정하기</Button>
+            <div onClick={toggleIsEdit}>수정하기</div>
           </div>
         )}
       </form>
