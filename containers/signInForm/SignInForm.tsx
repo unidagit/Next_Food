@@ -10,11 +10,12 @@ import Input from "../../components/input/Input";
 import { ErrorText, LabelText, TitleText } from "../../components/text/Text";
 import useInput from "../../hooks/useInput/useInput";
 import { IuserInterface, postLoginForm } from "../../lib/api";
-import { isUserAtom } from "../../provider/atom";
+import { isUserAccountAtom, isUserTokenAtom } from "../../provider/atom";
 import styles from "./SignInForm.module.css";
 
 function SignInForm() {
-  const [token, setToken] = useRecoilState(isUserAtom);
+  const [token, setToken] = useRecoilState(isUserTokenAtom);
+  const [account, setAccount] = useRecoilState(isUserAccountAtom);
 
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState("");
@@ -81,6 +82,7 @@ function SignInForm() {
           localStorage.setItem("account", data.user.accountname);
           localStorage.setItem("token_", data.user.token);
           setToken(data.user.token); //로그인했을때 아톰에 넣음
+          setAccount(data.user.accountname);
           router.push("/");
         }
       },

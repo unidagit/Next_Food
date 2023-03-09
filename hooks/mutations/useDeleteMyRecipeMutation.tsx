@@ -1,11 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRecoilValue } from "recoil";
 import { REACT_QUERY_KEY } from "../../common/constants";
 import { apiDeleteMyRecipe } from "../../lib/api";
-import getUserAccountname from "../../utils/getUserAccountname";
+import { isUserAccountAtom } from "../../provider/atom";
 
 function useDeleteMyRecipeMutation() {
   const queryClient = useQueryClient();
-  const accountname = getUserAccountname();
+  const accountname = useRecoilValue(isUserAccountAtom);
 
   const deleteMyRecipe = (recipeId: string) => {
     return apiDeleteMyRecipe(recipeId);
