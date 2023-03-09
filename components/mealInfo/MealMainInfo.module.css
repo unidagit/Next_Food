@@ -10,9 +10,6 @@
 
 .mealImageContainer {
   flex: 1;
-
-  /* min-width: 200px; */
-  /* max-width: 600px; */
 }
 
 .info {
@@ -70,6 +67,7 @@
 }
 
 .mealInfoBtnPlay {
+  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,31 +76,14 @@
   font-size: 0.8rem;
   text-align: center;
   border-radius: 5px;
-  margin-bottom: 10px;
   padding: 15px;
-  background-color: var(--color-primary-accent);
 }
 
 .mealInfoBtnPlay:hover {
   opacity: 0.9;
 }
 
-.mealInfoBtnLike {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  justify-content: center;
-  font-size: 0.8rem;
-  padding: 10px;
-  border: 1px solid var(--color-primary-accent);
-  border-radius: 5px;
-}
-
 .mealInfoBtnLike:hover {
-  color: var(--color-primary-accent);
-}
-
-.mealInfoBtnLikeImage {
   color: var(--color-primary-accent);
 }
 
