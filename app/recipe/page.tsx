@@ -5,12 +5,12 @@ import { useRecoilValue } from "recoil";
 import Wrapper from "../../components/common/wrapper/Wrapper";
 import RecipeForm from "../../containers/recipeForm/RecipeForm";
 import RecipeListForm from "../../containers/recipeListForm/RecipeListForm";
-import { isUserAtom } from "../../provider/atom";
+import { isUserTokenAtom } from "../../provider/atom";
 
 function RecipePage() {
   const router = useRouter();
   const [render, setRender] = useState();
-  const user = useRecoilValue(isUserAtom);
+  const user = useRecoilValue(isUserTokenAtom);
 
   useEffect(() => {
     setRender(user);

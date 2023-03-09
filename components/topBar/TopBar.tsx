@@ -1,32 +1,23 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { isUserAtom } from "../../provider/atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { isUserTokenAtom } from "../../provider/atom";
 import styles from "./TopBar.module.css";
 
 function TopBar() {
   const router = useRouter();
-  const [userToken, setUserToken] = useState<string | null>(null);
-  const [token, setToken] = useRecoilState(isUserAtom);
-  const userTokenHandler = useSetRecoilState(isUserAtom);
+  const [token, setToken] = useRecoilState(isUserTokenAtom);
+  const usertoken = useRecoilValue(isUserTokenAtom);
 
   const logoutClick = () => {
-    localStorage.removeItem("token_");
-    localStorage.removeItem("account");
-    userTokenHandler("");
+    setToken("");
     router.push("/signIn");
   };
-
-  useEffect(() => {
-    const localToken = localStorage.getItem("token_");
-    setUserToken(localToken);
-  }, []);
 
   return (
     <div className={styles.container}>
       <ul className={styles.wrapper}>
-        {token || userToken ? (
+        {usertoken ? (
           <>
             <li className={styles.loginText}>
               <Link href="/signIn">
