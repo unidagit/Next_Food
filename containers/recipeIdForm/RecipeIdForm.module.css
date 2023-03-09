@@ -25,3 +25,16 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.buttonLink {
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 0.2rem;
+  color: white;
+  background-color: var(--color-primary-accent);
+}
