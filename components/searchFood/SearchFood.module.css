@@ -1,9 +1,7 @@
 .searchInput {
   width: 100%;
   padding: 0.8rem;
-  margin: 0 0.5rem;
   border: 1px solid var(--color-primary-accent);
-  /* outline-color: 1px solid var(--color-primary-accent); */
   outline: none;
   border-radius: 0.5rem;
   background-color: transparent;
