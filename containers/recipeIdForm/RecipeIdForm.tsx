@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, useCallback, useRef, useState } from "react";
 import { Button } from "../../components/buttons/Button";
 import Wrapper from "../../components/common/wrapper/Wrapper";
@@ -22,7 +21,6 @@ function RecipeIdForm({
   itemImage,
   id,
 }: IrecipeProduct) {
-  const router = useRouter();
   const fileUploadBtn = useRef<HTMLInputElement>(null);
   const [isEdit, setIsEdit] = useState(false);
   const [localName, handleEditName] = useInput(itemName);
@@ -87,8 +85,6 @@ function RecipeIdForm({
     console.log(targetfile);
     console.log(e.target.foodImage.files);
 
-    // if (!!targetfile) {
-
     const product = {
       itemName: localName,
       price: Number(localNumber),
@@ -96,8 +92,6 @@ function RecipeIdForm({
       itemImage: targetfile ? targetImg : itemImage,
     };
     updateData({ product, id });
-
-    // }
   };
 
   return (
@@ -180,7 +174,9 @@ function RecipeIdForm({
           </div>
         ) : (
           <div className={styles.saveBox}>
-            <div onClick={toggleIsEdit}>수정하기</div>
+            <div className={styles.buttonLink} onClick={toggleIsEdit}>
+              수정하기
+            </div>
           </div>
         )}
       </form>

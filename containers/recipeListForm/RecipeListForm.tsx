@@ -1,8 +1,6 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
 import RecipeCard from "../../components/cards/RecipeCard/RecipeCard";
 import useGetMyRecipeQuery from "../../hooks/queries/useGetMyRecipeQuery";
-import { getRecipeList, IrecipeListData } from "../../lib/api";
 import styles from "./RecipeListForm.module.css";
 
 function RecipeListForm() {
@@ -14,14 +12,6 @@ function RecipeListForm() {
     isError,
     error,
   } = useGetMyRecipeQuery(accountname);
-
-  // console.log(accountname);
-
-  // const { data: recipeListData } = useQuery<IrecipeListData>(
-  //   ["recipeListData", accountname],
-  //   () => getRecipeList(accountname)
-  // );
-  // console.log(recipeListData);
 
   return (
     <>

@@ -4,7 +4,6 @@ import { IselectMeal } from "../../lib/api";
 import MealImage from "../img/MealImage";
 import styles from "./MealMainInfo.module.css";
 import PlayButton from "../../images/playbutton.svg";
-import LikeSvgComponent from "../icon/Like";
 import { ButtonLink } from "../buttons/Button";
 
 function MealMainInfo({ data }: { data: IselectMeal }) {
@@ -40,13 +39,9 @@ function MealMainInfo({ data }: { data: IselectMeal }) {
               className={styles.mealInfoBtnPlay}
               link={data?.strYoutube}
             >
-              <Image src={PlayButton} alt="save" width={14} />
+              <Image src={PlayButton} alt="play" width={14} />
               <p>Play</p>
             </ButtonLink>
-            <button className={styles.mealInfoBtnLike} type="button">
-              <LikeSvgComponent height={16} width={16} />
-              <p>Like</p>
-            </button>
           </div>
         </div>
       </div>

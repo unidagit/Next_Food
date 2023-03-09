@@ -58,7 +58,7 @@ function ButtonCatgeory({
       <button
         type="button"
         className={styles.buttonCatgeory}
-        onClick={() => onClickHandler(category.strCategory)} //함수를 호출? 내가 선택한 타겟을 받아서 그다음 실행, () => {}
+        onClick={() => onClickHandler(category.strCategory)}
       >
         {children}
       </button>

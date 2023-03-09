@@ -17,7 +17,6 @@ function MealsIdForm() {
       retry: 0,
     }
   );
-  // console.log(data);
 
   if (isLoading || !data) {
     return <Loading />;
