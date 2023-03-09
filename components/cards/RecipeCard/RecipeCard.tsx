@@ -19,7 +19,11 @@ function RecipeCard({ recipeInfo }: { recipeInfo: IrecipeProduct }) {
           className={styles.imageBox}
           onClick={() => router.push(`/recipe/id?r=${recipeInfo.id}`)}
         >
-          <MealImage imageAddress={recipeInfo.itemImage} />
+          <MealImage
+            width={420}
+            height={280}
+            imageAddress={recipeInfo.itemImage}
+          />
         </div>
         <ul className={styles.buttonBox}>
           <li className={styles.foodName}>{recipeInfo.itemName}</li>
