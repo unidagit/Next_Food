@@ -1,4 +1,6 @@
 import axios from "axios";
+import { useRecoilValue } from "recoil";
+import { isUserTokenAtom } from "../provider/atom";
 import getUserToken from "../utils/getUserToken";
 
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
@@ -11,6 +13,8 @@ const baseInstance = axios.create({
 });
 
 const userToken = getUserToken();
+
+// const user = useRecoilValue(isUserTokenAtom);
 
 const authInstance = axios.create({
   headers: {
@@ -25,6 +29,7 @@ export interface ICategoriesProps {
   categoriesLoading: boolean;
   categoriesError: boolean;
   categoriesErrorMessage: unknown;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface ICategories {
@@ -35,8 +40,8 @@ export interface ICategories {
 }
 
 export interface ICategoriesMeals {
-  idMeal: string;
-  strMeal: string;
+  idMeal?: string;
+  strMeal?: string;
   strMealThumb: string;
 }
 
