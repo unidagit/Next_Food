@@ -1,12 +1,13 @@
+"use client";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Light from "../../images/light.svg";
 import Dark from "../../images/dark.svg";
 import { useEffect } from "react";
+import styles from "./ThemeModeButton.module.css";
 
 function ThemeModeButton() {
   const { theme, setTheme } = useTheme();
-  console.log(theme);
 
   const themeModeHandle = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -22,11 +23,11 @@ function ThemeModeButton() {
 
   return (
     <>
-      <button onClick={themeModeHandle}>
+      <button className={styles.button} onClick={themeModeHandle}>
         {theme === "light" ? (
           <Image src={Dark} alt="a" width={24} />
         ) : (
-          <Image src={Light} alt="a" height={24} width={24} />
+          <Image src={Light} alt="a" width={24} />
         )}
       </button>
     </>
