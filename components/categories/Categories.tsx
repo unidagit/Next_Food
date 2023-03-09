@@ -10,6 +10,7 @@ function Categories({
   categoriesLoading,
   categoriesError,
   categoriesErrorMessage,
+  setQuery,
 }: ICategoriesProps) {
   if (categoriesLoading) {
     return <Loading />;
@@ -19,12 +20,6 @@ function Categories({
     return <>Error:{categoriesErrorMessage}</>;
   }
 
-  const onClickHandler = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    setSelectCategory(e); //내가 클릭한 인자를 함수에 담아서 보냄
-  };
-
   return (
     <div className={styles.categoriesContainer}>
       {categories &&
@@ -32,7 +27,10 @@ function Categories({
           <CategoryItem
             key={item.idCategory}
             category={item}
-            onClickHandler={onClickHandler} //함수를 넘김
+            onClickHandler={() => {
+              setSelectCategory(item.strCategory);
+              setQuery("");
+            }}
           />
         ))}
     </div>
