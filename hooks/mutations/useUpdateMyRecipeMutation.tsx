@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { useRecoilValue } from "recoil";
+import { useRecoilValueLoadable } from "recoil";
 import { REACT_QUERY_KEY } from "../../common/constants";
 import { apiUpdateMyRecipe, IproductInterface } from "../../lib/api";
 import { isUserAccountAtom } from "../../provider/atom";
@@ -8,7 +8,7 @@ import { isUserAccountAtom } from "../../provider/atom";
 function useUpdateMyRecipeMutation() {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const accountname = useRecoilValue(isUserAccountAtom);
+  const accountname = useRecoilValueLoadable(isUserAccountAtom);
 
   const updateMyRecipe = ({
     product,

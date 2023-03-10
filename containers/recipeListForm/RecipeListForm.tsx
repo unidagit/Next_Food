@@ -1,11 +1,21 @@
 "use client";
+import { useEffect, useState } from "react";
 import RecipeCard from "../../components/cards/RecipeCard/RecipeCard";
 import useGetMyRecipeQuery from "../../hooks/queries/useGetMyRecipeQuery";
 import styles from "./RecipeListForm.module.css";
 
 function RecipeListForm() {
-  const accountname =
-    typeof window !== "undefined" ? localStorage.getItem("account") : null;
+  const [accountname, setAccountName] = useState<any>({});
+
+  useEffect(() => {
+    const localState = JSON.parse(
+      localStorage.getItem("userAccount") as string
+    );
+    setAccountName(localState || {});
+  }, []);
+
+  // const accountname =
+  //   typeof window !== "undefined" ? localStorage.getItem("account") : null;
   const {
     data: recipeListData,
     isLoading,
