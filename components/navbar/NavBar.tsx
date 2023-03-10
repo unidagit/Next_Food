@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./NavBar.module.css";
 import Logo from "../../images/LogoOrange.svg";
-// import ThemeModeButton from "../themeModeButton/ThemeModeButton";
 
 function Navbar() {
   return (
@@ -10,7 +9,7 @@ function Navbar() {
       <ul className={styles.wrapper}>
         <li className={styles.left}>
           <Link href="/">
-            <Image src={Logo} alt="logo" width={140} />
+            <Image src={Logo} alt="logo" width={120} />
           </Link>
         </li>
 
@@ -21,8 +20,6 @@ function Navbar() {
           <Link className={styles.foodButton} href="/meals">
             <p className={styles.mealsText}>Meals</p>
           </Link>
-
-          {/* <ThemeModeButton></ThemeModeButton> */}
         </li>
       </ul>
     </div>

@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useRecoilValue } from "recoil";
-import { isUserTokenAtom } from "../provider/atom";
 import getUserToken from "../utils/getUserToken";
 
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
@@ -129,6 +127,11 @@ export interface IrecipeProduct {
   link: string;
   itemImage: string;
 }
+
+export const getRandomFood = async () => {
+  const res = await axios.get(`${BASE_URL}/random.php`);
+  return res.data.meals[0];
+};
 
 export const getCategories = async () => {
   const res = await axios.get(`${BASE_URL}/categories.php`);

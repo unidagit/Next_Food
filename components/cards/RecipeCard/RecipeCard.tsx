@@ -12,6 +12,8 @@ function RecipeCard({ recipeInfo }: { recipeInfo: IrecipeProduct }) {
 
   const { mutate: myRecipeDelete } = useDeleteMyRecipeMutation();
 
+  console.log(recipeInfo.itemImage);
+
   return (
     <>
       <div className={styles.recipeCardBox}>
