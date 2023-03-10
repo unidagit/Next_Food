@@ -1,4 +1,6 @@
 import Banner from "../../components/banner/Banner";
+import RandomFood from "../../components/randomFood/RandomFood";
+
 import styles from "./HomeForm.module.css";
 
 export default function HomeForm() {
@@ -9,7 +11,7 @@ export default function HomeForm() {
           <Banner />
         </div>
         <div className={styles.foodContainer}>
-          <h2>오늘은 이 메뉴 어떠세요?</h2>
+          <RandomFood />
         </div>
       </div>
     </>

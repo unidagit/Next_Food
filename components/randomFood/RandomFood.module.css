@@ -1,0 +1,10 @@
+.foodImage {
+  border-radius: 50%;
+  margin-top: 2rem;
+}
+
+.foodName {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
