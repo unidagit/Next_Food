@@ -2,7 +2,7 @@ import axios from "axios";
 import getUserToken from "../utils/getUserToken";
 
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
-const API_URL = "https://mandarin.api.weniv.co.kr";
+const API_URL = "https://api.mandarin.weniv.co.kr";
 
 const baseInstance = axios.create({
   headers: {
